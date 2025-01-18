@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Example</title>
+  <script>
+    async function redirectUser() {
+      // Проверяем операционную систему
+      const isAndroid = /android/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      // Получаем геолокацию через API
+      try {
+        const response = await fetch('https://ipinfo.io/json?token=dffa7b5fd952e3'); // Вставьте ваш токен
+        const data = await response.json();
+
+        if (isAndroid && data.country === 'UZ') {
+          // Перенаправляем Android пользователей
+          window.location.href = "https://1wvgsu.top/v3/reg-form-aviator?p=9sw2";
+        } else if (isIOS && data.country === 'UZ') {
+          // Перенаправляем iOS пользователей
+          window.location.href = "https://1wvgsu.top/v3/reg-form-aviator?p=9sw2";
+        } else {
+          // Перенаправляем всех остальных
+          window.location.href = "https://play.google.com/store/apps/details?id=com.dvdfu.chicken2";
+        }
+      } catch (error) {
+        console.error("Ошибка получения геолокации:", error);
+        // При ошибке можно оставить пользователя на текущей странице или перенаправить на другой сайт
+        window.location.href = "https://default-site.com";
+      }
+    }
+
+    // Выполняем перенаправление при загрузке страницы
+    window.onload = redirectUser;
+  </script>
+</head>
+<body>
+  <p> </p>
+</body>
+</html>
